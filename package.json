@@ -19,6 +19,7 @@
     "monday-ui-react-core": "0.0.48",
     "react": "^16.13.0",
     "react-dom": "^16.13.0",
+    "react-router-dom": "^6.0.1",
     "react-scripts": "3.4.0"
   },
   "eslintConfig": {
