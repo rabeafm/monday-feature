@@ -6,7 +6,7 @@
     "start": "npm run stop && concurrently \"npm run server\" \"npm run expose\"",
     "build": "react-scripts build",
     "expose": "ngrok http 8301",
-    "server": "react-scripts start",
+    "server": "PORT=8301 react-scripts start",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "stop": "kill-port 8301 && kill-port 4049 && kill-port 4040"
