@@ -26,9 +26,7 @@ const App = () => {
     if (state.context.itemId) {
       monday
         .api(
-          `query ($itemIds: [Int]) { items (ids: $itemIds) *`, //{ name id  column_values {
-          //title : 'Timeline'
-          //}  } }`,
+          `query ($itemIds: [Int]) { items (ids: $itemIds) { column_values { id text title type value additional_info } } }`,
           {
             variables: {
               itemIds: [state.context.itemId],
