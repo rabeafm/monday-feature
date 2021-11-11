@@ -1,5 +1,6 @@
-import React, { useState, useEffect } from "react";
-import mondaySdk from "monday-sdk-js";
+import React, { useState, useEffect } from 'react';
+import mondaySdk from 'monday-sdk-js';
+import MonkeyRace from './MonkeyRace';
 
 const monday = mondaySdk();
 
@@ -25,16 +26,16 @@ const Board = () => {
       let status;
       item.column_values.map((column) => {
         switch (column.title) {
-          case "Estimated time":
+          case 'Estimated time':
             estimate = column.text;
             break;
-          case "Actual time":
+          case 'Actual time':
             actual = column.text;
             break;
-          case "Person":
-            persons = column.text.split(", ");
+          case 'Person':
+            persons = column.text.split(', ');
             break;
-          case "Status":
+          case 'Status':
             status = column.text;
             break;
           default:
@@ -54,24 +55,24 @@ const Board = () => {
         if (map.get(person)) {
           const oldData = map.get(person);
           newData.items = 1 + oldData.items;
-          newData.stuck = isSameStatus("Stuck", status) + oldData.stuck;
+          newData.stuck = isSameStatus('Stuck', status) + oldData.stuck;
           newData.working =
-            isSameStatus("Working on it", status) + oldData.working;
-          newData.done = isSameStatus("Done", status) + oldData.done;
+            isSameStatus('Working on it', status) + oldData.working;
+          newData.done = isSameStatus('Done', status) + oldData.done;
           newData.acc = Math.abs(estimate - actual) + oldData.acc;
           newData.dir = actual - estimate + oldData.dir;
-          isSameStatus("Working on it", status)
+          isSameStatus('Working on it', status)
             ? (newData.workingItems = [...oldData.workingItems, ...[itemName]])
             : (newData.workingItems = oldData.workingItems);
           console.log(typeof newData.workingItems);
         } else {
           newData.items = 1;
-          newData.stuck = isSameStatus("Stuck", status);
-          newData.working = isSameStatus("Working on it", status);
-          newData.done = isSameStatus("Done", status);
+          newData.stuck = isSameStatus('Stuck', status);
+          newData.working = isSameStatus('Working on it', status);
+          newData.done = isSameStatus('Done', status);
           newData.acc = Math.abs(estimate - actual);
           newData.dir = actual - estimate;
-          if (isSameStatus("Working on it", status))
+          if (isSameStatus('Working on it', status))
             newData.workingItems = [...[], ...[itemName]];
         }
         map.set(person, newData);
@@ -91,7 +92,7 @@ const Board = () => {
         const statToAdd = {
           name: key,
           tasks: item.items,
-          taskStatus: item.working * 0.5 + item.done * 1,
+          taskstatus: item.working * 0.5 + item.done * 1,
           workingTasks: item.workingItems,
           accuracy: item.acc,
           accuracyDirection: item.dir,
@@ -109,7 +110,7 @@ const Board = () => {
     const fetchBoard = async () => {
       try {
         monday.setToken(
-          "eyJhbGciOiJIUzI1NiJ9.eyJ0aWQiOjEzMjA1NTk4NywidWlkIjoyNTAzNjQ1NCwiaWFkIjoiMjAyMS0xMS0wOFQxMjoxMjo0OS4wMDBaIiwicGVyIjoibWU6d3JpdGUiLCJhY3RpZCI6MTEwMjMyOCwicmduIjoidXNlMSJ9.fcTHFIXYVCOZsbU0hIaknPPpOX-pVsXGXg5qkoVEKkk"
+          'eyJhbGciOiJIUzI1NiJ9.eyJ0aWQiOjEzMjA1NTk4NywidWlkIjoyNTAzNjQ1NCwiaWFkIjoiMjAyMS0xMS0wOFQxMjoxMjo0OS4wMDBaIiwicGVyIjoibWU6d3JpdGUiLCJhY3RpZCI6MTEwMjMyOCwicmduIjoidXNlMSJ9.fcTHFIXYVCOZsbU0hIaknPPpOX-pVsXGXg5qkoVEKkk'
         );
         const res = await monday.api(`query {
           boards(ids:1879880968){
@@ -143,7 +144,8 @@ const Board = () => {
     if (data) generateStat();
   }, [data]);
 
-  return <></>;
+  if (stats) console.log(stats);
+  return stats ? <MonkeyRace stats={stats} /> : <h1>Loading</h1>;
 };
 
 export default Board;

@@ -1,12 +1,80 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Roboto', sans-serif;
+}
+
 body {
   margin: 0;
-  font-family: "Roboto", sans-serif;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
 }
 
 .App {
   height: 100vh;
   width: 100vw;
+}
+
+h1,
+h2 {
+  padding: 5px 0;
+  text-align: center;
+}
+.jungle {
+  height: 100vh;
+  width: 100vw;
   display: flex;
-  align-items: center;
-  justify-content: center;
+  flex-direction: column;
+  background: url('/assets/jungle.jpeg') center / cover;
+  animation: move-road 6s 1 1.3s ease-in-out forwards;
+}
+
+.legend {
+  margin: 20px;
+  padding: 20px;
+  width: 400px;
+  background-color: #d5aa0e;
+  align-self: center;
+  color: green;
+  border: 4px dashed green;
+  outline: 8px solid #d5aa0e;
+  border-radius: 6px;
+}
+
+.progress-bar {
+  display: none;
+  width: 80vw;
+  height: 30px;
+  position: fixed;
+  bottom: 0;
+  padding: 0px;
+  margin: 10px;
+  border-radius: 70px;
+  align-self: center;
+}
+.progress {
+  margin: 1px;
+  margin-left: auto;
+  width: 10%;
+  height: 20px;
+  background-color: green;
+  border-radius: 70px;
+}
+
+/* Race Animations */
+
+/* Keyframes */
+@keyframes move-road {
+  100% {
+    background-position: 1599px 50%;
+  }
 }
