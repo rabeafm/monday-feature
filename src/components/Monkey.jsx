@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled from "styled-components";
 
 const Monkey = styled.div`
   display: flex;
@@ -6,12 +6,12 @@ const Monkey = styled.div`
   align-items: center;
   position: fixed;
   right: 0;
-  bottom: ${(props) => (props.id + 0.6) * 10 || '10'}%;
+  bottom: ${(props) => (props.id + 0.6) * 10 || "10"}%;
   z-index: ${(props) => 10 - props.id};
 
   .tip {
     display: none;
-    width: 200px;
+    width: 230px;
     padding: 15px 10px;
     color: green;
     background-color: #d5aa0e;
