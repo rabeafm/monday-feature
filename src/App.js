@@ -1,10 +1,8 @@
-import React from "react";
-import "./App.css";
-import "monday-ui-react-core/dist/main.css";
-import Board from "./components/Board";
+import React from 'react';
+import './App.css';
+import 'monday-ui-react-core/dist/main.css';
+import Board from './components/Board';
 
-const App = () => {
-  return <Board />;
-};
+const App = () => <Board />;
 
 export default App;
