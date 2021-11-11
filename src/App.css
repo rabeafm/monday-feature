@@ -1,12 +1,84 @@
-body {
+@import url("https://fonts.googleapis.com/css2?family=Happy+Monkey&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap");
+
+/* General App CSS Settings */
+* {
   margin: 0;
-  font-family: "Roboto", sans-serif;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Happy Monkey", cursive, "Roboto", sans-serif;
+  color: green;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
-.App {
+body {
   height: 100vh;
   width: 100vw;
+  background-color: #d5aa0e;
   display: flex;
   align-items: center;
   justify-content: center;
+}
+
+h1,
+h2 {
+  padding: 5px 0;
+  text-align: center;
+}
+
+p {
+  display: inline;
+}
+
+/* Monkey Race CSS Settings */
+.jungle {
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  flex-direction: column;
+  background: url("/assets/jungle.jpeg") center / cover;
+  animation: race 6s 1 1.3s ease-in-out forwards;
+}
+
+/* Race Animation */
+@keyframes race {
+  100% {
+    background-position: 1599px 50%;
+  }
+}
+
+/* Boxes Design */
+.legend {
+  margin: 40px;
+  padding: 20px;
+  padding-top: 5px;
+  align-self: flex-end;
+  width: 310px;
+  border: 4px dashed green;
+  outline: 8px solid #d5aa0e;
+  border-radius: 6px;
+  background-color: #d5aa0e;
+  color: green;
+}
+
+.progress-bar {
+  display: none;
+  width: 80vw;
+  height: 30px;
+  position: fixed;
+  bottom: 0;
+  padding: 0px;
+  margin: 10px;
+  border-radius: 70px;
+  align-self: center;
+}
+
+.progress {
+  margin: 1px;
+  margin-left: auto;
+  width: 10%;
+  height: 20px;
+  background-color: green;
+  border-radius: 70px;
 }
