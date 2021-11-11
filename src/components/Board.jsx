@@ -145,7 +145,13 @@ const Board = () => {
   }, [data]);
 
   if (stats) console.log(stats);
-  return stats ? <MonkeyRace stats={stats} /> : <h1>Loading</h1>;
+  return stats ? (
+    <MonkeyRace stats={stats} />
+  ) : (
+    <div className="legend">
+      <h1>Loading...</h1>
+    </div>
+  );
 };
 
 export default Board;
